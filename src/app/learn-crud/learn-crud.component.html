@@ -1,0 +1,28 @@
+<table class="table table-dark table-striped table-hover table-bordered border-dark">
+    <thead>
+        <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Body</th>
+        <th scope="col">Title</th>
+        <th scope="col">Url</th>
+        <th scope="col">thumbnailurl</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of todo">
+        <td>{{row.id }}</td>
+        <td>{{row.body }}</td>
+        <td>{{row.title }}</td>
+        <td>{{row.url}}</td>
+        <td>{{row.thumbnailUrl}}</td>
+
+    </tr>
+    <tr *ngFor="let rw of value">
+        <td>{{rw.id}}</td>
+        <td>{{rw.data}}</td>
+        <td>{{rw.title}}</td>
+    </tr>
+    </tbody>
+</table>
+
+ 
