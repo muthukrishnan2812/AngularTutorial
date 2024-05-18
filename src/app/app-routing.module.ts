@@ -6,11 +6,17 @@ import { LearnRxjsComponent } from './learn-rxjs/learn-rxjs.component';
 import { TableEditCrudComponent } from './table-edit-crud/table-edit-crud.component';
 import { ModalComponent } from './modal/modal.component';
 import { LodashComponent } from './lodash/lodash.component';
+import { DemoComponent } from './demo/demo.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'learn',
     component:LearnCrudComponent
+  },
+  {
+    path:'',
+    redirectTo:'/learn',
+    pathMatch:"prefix"
   },
   {
     path:'form',
@@ -31,6 +37,10 @@ const routes: Routes = [
   {
     path:'lodash',
     component:LodashComponent
+  },
+  {
+    path:'demo',
+    component:DemoComponent
   }
   
 ];

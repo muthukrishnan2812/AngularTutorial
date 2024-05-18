@@ -19,25 +19,30 @@
         <div [hidden]="todo.valid|| todo.title" class="text-danger alert alert-danger">title required</div>
     </form>
 </div>
+@if (todo) {
+    <div>
+        <table class="table table-bordered">
+         <thead class="table-dark">
+             <tr>
+             <th>Id</th>
+             <th>Body</th>
+             <th>Title</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>{{todo.id | json}}</td>
+                 <td>{{todo.body | json}}</td>
+                 <td>{{todo.title | json}}</td>
+             </tr>
+         </tbody>
+        </table>
+     </div>
+}
+@else {
+    <div style="color: red;">none of the data</div>
+}
 
-<div *ngIf="todo">
-   <table class="table table-bordered">
-    <thead class="table-dark">
-        <tr>
-        <th>Id</th>
-        <th>Body</th>
-        <th>Title</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{todo.id | json}}</td>
-            <td>{{todo.body | json}}</td>
-            <td>{{todo.title | json}}</td>
-        </tr>
-    </tbody>
-   </table>
-</div>
 <div>
     <form (ngSubmit)="postData()" class="form">
         <label for="body">Body:</label>

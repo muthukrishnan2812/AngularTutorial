@@ -18,46 +18,67 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+
                 <tbody class="table-info">
-                    <tr *ngFor="let user of userArray; let srNo = index;">
+                    @for(user of userArray;track user; let srNo = $index){
+                    <tr>
                         <td>{{srNo+1}}</td>
                         <td>
-                            <div *ngIf="user.isEdit">
-                                <input type="text" [(ngModel)]="user.name">
-                            </div>
-                            <div *ngIf="!user.isEdit">{{user.name | uppercase}}</div>
+                            @if(user.isEdit){
+                            <div> <input type="text" [(ngModel)]="user.name"> </div>
+                            }
+                            @else {
+                            <div>{{user.name | uppercase}}</div>
+                            }
                         </td>
                         <td>
-                            <div *ngIf="user.isEdit">
-                                <input type="text" [(ngModel)]="user.username">
-                            </div>
-                            <div *ngIf="!user.isEdit"> {{user.username}}</div>
+                            @if(user.isEdit){
+                            <div> <input type="text" [(ngModel)]="user.username"> </div>
+                            }
+                            @else {
+                            <div>{{user.username}}</div>
+                            }
                         </td>
                         <td>
-                            <div *ngIf="user.isEdit">
-                                <input type="text" [(ngModel)]="user.email">
-                            </div>
-                            <div *ngIf="!user.isEdit">{{user.email}}</div>
+                            @if(user.isEdit){
+                            <div> <input type="text" [(ngModel)]="user.email"> </div>
+                            }
+                            @else {
+                            <div>{{user.email}}</div>
+                            }
                         </td>
                         <td>
-                            <div *ngIf="user.isEdit">
-                                <input type="text" [(ngModel)]="user.phone">
-                            </div>
-                            <div *ngIf="!user.isEdit">{{user.phone}}</div>
+                            @if (user.isEdit) {
+                            <div><input type="text" [(ngModel)]="user.phone"></div>
+                            }
+                            @else {
+                            <div>{{user.phone}}</div>
+                            }
                         </td>
-                        <td>{{user.website}}</td>
                         <td>
-                            <div *ngIf="!user.isEdit">
+                            @if (user.isEdit) {
+                                {{user.website}}
+                            }
+                            @else {
+                                {{user.website}}
+                            }
+                        </td>
+                        <td>
+                            @if (!user.isEdit) {
+                            <div>
                                 <i class="bi bi-pencil-square mx-3" (click)="onedit(user)"></i>
                                 <i class="bi bi-trash-fill mx-3"></i>
                             </div>
-                            <div *ngIf="user.isEdit">
+                            }
+                            @else if (user.isEdit) {
+                            <div>
                                 <i class="bi bi-floppy mx-3" (click)="update(user)"></i>
                                 <i class="bi bi-x-square mx-3" (click)="cancel(user)"></i>
                             </div>
-
+                            }
                         </td>
                     </tr>
+                    }
                 </tbody>
             </table>
         </div>

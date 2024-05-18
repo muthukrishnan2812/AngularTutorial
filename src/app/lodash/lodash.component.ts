@@ -384,6 +384,18 @@ export class LodashComponent {
     //gte its works for greater than and equal values
     console.log('gte',_.gte(3,3));
     
+    //add
+    console.log('add',_.add(6,2));
+    
+    //random
+    console.log('random',_.random(5,true));
+    
+    //transform
+    const numbers=[1,2,3,4,5]
+    let result = _.transform(numbers,function(result:any,value:any){
+      result.push(value*value)
+    })
+    console.log('transform',result);
     
   }
   duplicate(n: any) {
@@ -423,6 +435,4 @@ export class LodashComponent {
   resizeHandler() {
     console.log('Window resized to', window.innerWidth, 'x', window.innerHeight);
   }
-
-
 }

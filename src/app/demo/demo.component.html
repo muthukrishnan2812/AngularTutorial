@@ -1,1 +1,50 @@
-<p>demo works!</p>
+<p>demo component</p>
+
+@if(a<b){
+    {{a}} is less than {{b}}
+}
+@else {
+    {{a}}is not a greater than {{b}}
+}
+@if(users; as user){
+    <div>
+    {{user.name}}
+    </div>
+}
+@for(name of names; track name; let e=$last){
+    @if(name){
+            <li>{{name}}</li>
+            <li>{{e}}</li>
+    }
+    @else {
+        <li>no names available</li>
+    }
+}
+@if(names){
+    @for(name of names; track name){
+        <div [class]="{ 'color': value }">
+            <li>{{name}}</li>
+         </div>
+    }
+}@else {
+    <div>no text available</div>
+}
+@switch (color) {
+    @case ('red') {
+        <div>color is red</div>
+    }
+    @case ("black"){
+        <div>color is black</div>
+    }
+    @default {
+        <div>none of them</div>
+    }
+}
+@for(name of names; track name;let c=$count){
+    <li>{{name}}</li>
+    <li>{{c.toLocaleString()}}</li>
+}
+@empty {
+    <li>no names available</li>
+}
+
