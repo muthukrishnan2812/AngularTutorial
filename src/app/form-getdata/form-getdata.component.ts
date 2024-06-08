@@ -43,7 +43,6 @@ export class FormGetdataComponent {
       console.log(del);
       this.todo=del;
       console.log(this.todo);
-      
       alert('data deleted suceesfully');
     })
    }

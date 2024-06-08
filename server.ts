@@ -1,9 +1,16 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
 import express from 'express';
+import helmet from 'helmet';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import AppServerModule from './src/main.server';
+
+type SourceList = string[];
+function getTrustedSources(): SourceList {
+  // Example trusted sources, normally this could be dynamic or from a config file
+  return ['https://trustedcdn.com', 'https://api.trustedsource.org'];
+}
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -41,6 +48,39 @@ export function app(): express.Express {
   });
 
   return server;
+  
+}
+export default function contentSecurityPolicy(nonce: string) {
+  // Get dynamic list of trusted sources
+  const trustedSources = getTrustedSources();
+
+  // Return the CSP middleware configured with directives
+  return helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [...trustedSources], 
+      styleSrc: [
+        `'nonce-${nonce}'`, 
+        'https://fonts.googleapis.com',
+        'https://cdn.jsdelivr.net', 
+        ...trustedSources  
+      ],
+      scriptSrc: [
+        `'nonce-${nonce}'`, 
+        'https://apis.google.com', 
+        ...trustedSources 
+      ],
+      imageSrc:[
+        `'nonce-${nonce}'`,
+        'https://apis.google.com',
+        ...trustedSources
+      ],
+      imagengSrc:[
+        `'nonce-${nonce}'`,
+        'https://fakestoreapi.com',
+        ...trustedSources
+      ]
+    }
+  });
 }
 
 function run(): void {

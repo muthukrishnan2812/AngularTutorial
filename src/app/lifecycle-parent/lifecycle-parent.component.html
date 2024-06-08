@@ -1,0 +1,7 @@
+<p>lifecycle-parent works!</p>
+<input type="text" [(ngModel)]="channelName">
+@if (isChild) {
+<app-lifecycle-child [channelName]="channelName">
+    <h1 #temp>hello</h1>
+</app-lifecycle-child>
+}

@@ -7,17 +7,22 @@ import { TableEditCrudComponent } from './table-edit-crud/table-edit-crud.compon
 import { ModalComponent } from './modal/modal.component';
 import { LodashComponent } from './lodash/lodash.component';
 import { DemoComponent } from './demo/demo.component';
+import { ImageOptimizeComponent } from './image-optimize/image-optimize.component';
+import { BehaviorSubject } from 'rxjs';
+import { BehavioursubjectComponent } from './behavioursubject/behavioursubject.component';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
+import { SignalComponent } from './signal/signal.component';
 
 const routes: Routes = [
   {
     path:'learn',
     component:LearnCrudComponent
   },
-  {
-    path:'',
-    redirectTo:'/learn',
-    pathMatch:"prefix"
-  },
+  // {
+  //   path:'',
+  //   redirectTo:'/learn',
+  //   pathMatch:"prefix"
+  // },
   {
     path:'form',
     component:FormGetdataComponent
@@ -41,6 +46,22 @@ const routes: Routes = [
   {
     path:'demo',
     component:DemoComponent
+  },
+  {
+    path:'image',
+    component:ImageOptimizeComponent
+  },
+  {
+    path:'subject',
+    component:BehavioursubjectComponent
+  },
+  {
+    path:'lifecycle',
+    component:LifecycleComponent
+  },
+  {
+    path:'signal',
+    component:SignalComponent
   }
   
 ];

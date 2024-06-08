@@ -1,0 +1,19 @@
+img{
+    height: 500px;
+    width: 400px;
+}
+.image-container{
+    position: relative;
+    height: 150px;
+    width: 200px;
+    // overflow: hidden;
+}
+.post-image {
+    display: block;
+    height: auto;
+    object-fit: contain; 
+    object-position: center; 
+}
+.txt{
+    text-align: center;
+}

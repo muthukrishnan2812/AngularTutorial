@@ -1,0 +1,36 @@
+<!-- <div>
+    <img ngSrc="/assets/img1.png" alt="" width="1400" height="750" priority>
+</div> -->
+<table class="table-bordered">
+    <thead>
+        <tr class="text-danger">
+            <th class="mx-auto">Id</th>
+            <th class="txt">Title</th>
+            <th class="txt">Description</th>
+            <th class="txt">Image</th>
+            <th class="txt">Price</th>
+            <th class="txt">Rating <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (post of posts; track post.id;) {
+        <tr>
+            <td>{{ post.id }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.description }}</td>
+            @if (post.image) {
+            <td class="image-container">
+                <img class="post-image" [ngSrc]="post.image" fill loading="lazy">
+            </td>
+            }
+            <td>{{ post.price*50 | currency:'INR' }}</td>
+            @if (post.rating.rate) {
+            <td class="txt">{{post.rating.rate}}</td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
